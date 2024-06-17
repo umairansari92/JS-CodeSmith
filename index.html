@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <title>My Third Task JavaScript In Final Hackathon at SMIT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+           color: #ebb4b4;
+            margin-bottom: 63px;
+            font-size: 78px;
+            background-color: #333;
+            padding: 70px;
+            font-family: "Pacifico", cursive;
+            font-weight: 400;
+            font-style: normal;
+}
+
+        }
+        h2 {
+            text-align: center;
+            color: #ebb4b4;
+            margin-bottom: 63px;
+            font-size: 40px;
+            background-color: #333;
+            padding: 70px;
+        }
+        .task-container {
+            background-color: #c1a3ad;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+        .task-container:nth-child(odd) {
+            background-color: 806e6e;
+        }
+        .task-container:nth-child(even) {
+            background-color: #c1a3ad;
+        }
+        .task-header {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            color: #333;
+        }
+        input[type="text"], input[type="number"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            color: #fff;
+        }
+        button.count-button {
+            background-color: #00796b;
+        }
+        button.fibonacci-button {
+            background-color: #d32f2f;
+        }
+        button.sort-button {
+            background-color: #1976d2;
+        }
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <Div>
+    <h1>My Third Task JavaScript In Final Hackathon at SMIT</h1>
+    <!-- <h2>Saylani Mass IT Training</h2> -->
+</Div>
+    <div class="task-container">
+        <div class="task-header">Count Characters</div>
+        <input type="text" id="characterInput" placeholder="Enter a string">
+        <button class="count-button" onclick="showCharacterCount()">Count Characters</button>
+        <div id="characterResult" class="result">Result will be shown here.</div>
+    </div>
+
+    <div class="task-container">
+        <div class="task-header">Fibonacci Sequence</div>
+        <input type="number" id="fibonacciInput" placeholder="Enter a number">
+        <button class="fibonacci-button" onclick="showFibonacci()">Generate Fibonacci Sequence</button>
+        <div id="fibonacciResult" class="result">Result will be shown here.</div>
+    </div>
+
+    <div class="task-container">
+        <div class="task-header">Sort Numbers</div>
+        <input type="text" id="sortInput" placeholder="Enter numbers">
+        <button class="sort-button" onclick="showSortedNumbers()">Sort Numbers</button>
+        <div id="sortedNumbersResult" class="result">Result will be shown here.</div>
+    </div>
+
+    <script>
+        function countCharacters(s) {
+            return s.replace(/\s/g, '').length;
+        }
+
+        function fibonacci(n) {
+            if (n <= 0) {
+                return [];
+            } else if (n === 1) {
+                return [0];
+            } else if (n === 2) {
+                return [0, 1];
+            } else {
+                let sequence = [0, 1];
+                for (let i = 2; i < n; i++) {
+                    sequence.push(sequence[i - 1] + sequence[i - 2]);
+                }
+                return sequence;
+            }
+        }
+
+        function sortNumbers(s) {
+            return s.toString().split('').sort().join(', ');
+        }
+
+        function showCharacterCount() {
+            const inputString = document.getElementById("characterInput").value;
+            const result = countCharacters(inputString);
+            document.getElementById("characterResult").innerText = `Character count: ${result}`;
+        }
+
+        function showFibonacci() {
+            const n = parseInt(document.getElementById("fibonacciInput").value, 10);
+            if (isNaN(n) || n < 1) {
+                alert("Please enter a valid positive integer for Fibonacci sequence");
+                return;
+            }
+            const result = fibonacci(n);
+            document.getElementById("fibonacciResult").innerText = `Fibonacci sequence: ${result.join(', ')}`;
+        }
+
+        function showSortedNumbers() {
+            const inputNumbers = document.getElementById("sortInput").value;
+            const result = sortNumbers(inputNumbers);
+            document.getElementById("sortedNumbersResult").innerText = `Sorted numbers: ${result}`;
+        }
+    </script>
+</body>
+</html>
